@@ -60,6 +60,7 @@ header > button {
 main {
     background: linear-gradient(#F5DB13, #F2B807);
 }
+
 main, main div {
     display: flex;
     flex-direction: column;
