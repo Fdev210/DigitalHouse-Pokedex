@@ -27,6 +27,11 @@
     flex-direction: row;
 }
 
+.legendarie-details > img {
+
+    height: 115%;
+}
+
 .legendarie-details > div {
     display: flex;
     flex-flow: column;
@@ -107,3 +112,6 @@
     padding: 0 8px;
 }
 
+.first a img {
+    max-width: 100%;
+}

@@ -24,13 +24,13 @@
             <a href="index.html">
                 Home
             </a>
-            <a href="#">
+            <a href="/legendaries?name=">
                 Pokédex
             </a>
-            <a href="#">
+            <a href="/legendaries?name=">
                 Legendaries
             </a>
-            <a href="#">
+            <a href="/legendaries?name=">
                 Documentation
             </a>
         </nav>
@@ -39,7 +39,7 @@
         <h1>Legendaries</h1>
         <div class="legendarie-details">
             <% if (legendary) { %>
-                <img src="images/mew.svg" alt="Mew Picture">
+                <img src="<%= legendary.image %>" alt="Mew Picture">
                 <div>
                     <h2> <%= legendary.name %> </h2>
                     <p> <%= legendary.description %></p>
@@ -95,42 +95,42 @@
         <div class="legendaries-carousel">
             <img src="images/left-arrow.svg" alt="Left Arrow">
             <div class="carousel-legendarie-box first">
-                <img src="images/mew.svg" alt="Mew Picture">
+                <a href="/legendaries?name=mew"><img src="images/mew.svg" alt="Mew Picture"></a>
                 <div>
                     <p>Mew</p>
                     <img src="images/pokeball.svg" alt="Pokeball">
                 </div>
             </div>
             <div class="carousel-legendarie-box">
-                <img src="images/moltres.svg" alt="Moltres Picture">
+                <a href="/legendaries?name=moltres"><img src="images/moltres.svg" alt="Moltres Picture"></a>
                 <div>
                     <p>Moltres</p>
                     <img src="images/pokeball.svg" alt="Pokeball">
                 </div>
             </div>
             <div class="carousel-legendarie-box">
-                <img src="images/articuno.svg" alt="Articuno Picture">
+                <a href="/legendaries?name=articuno"><img src="images/articuno.svg" alt="Articuno Picture"></a>
                 <div>
                     <p>Articuno</p>
                     <img src="images/pokeball.svg" alt="Pokeball">
                 </div>
             </div>
             <div class="carousel-legendarie-box">
-                <img src="images/zapdos.svg" alt="Zapdos Picture">
+                <a href="/legendaries?name=zapdos"><img src="images/zapdos.svg" alt="Zapdos Picture"></a>
                 <div>
                     <p>Zapdos</p>
                     <img src="images/pokeball.svg" alt="Pokeball">
                 </div>
             </div>
             <div class="carousel-legendarie-box">
-                <img src="images/diance.svg" alt="Diance Picture">
+                <a href="/legendaries?name=diancie"><img src="images/diance.svg" alt="Diance Picture"></a>
                 <div>
                     <p>Diance</p>
                     <img src="images/pokeball.svg" alt="Pokeball">
                 </div>
             </div>
             <div class="carousel-legendarie-box">
-                <img src="images/xerneas.svg" alt="Xerneas Picture">
+                <a href="/legendaries?name=xerneas"><img src="images/xerneas.svg" alt="Xerneas Picture"></a>
                 <div>
                     <p>Xerneas</p>
                     <img src="images/pokeball.svg" alt="Pokeball">
