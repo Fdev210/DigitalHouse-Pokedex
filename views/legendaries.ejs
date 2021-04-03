@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legendaries</title>
+    <link href="stylesheets/legendaries.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <img src="images/logo.svg" alt="LOGO"/>
+        <button type="button" class="hamburguer-menu">
+            <img src="images/hamburguer.svg" alt="botão" /> 
+        </button> 
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="#">Pokedéx</a>
+            <a id="#legendaries" href="#legendaries">Legendaries</a>
+            <a href="#">Documentation</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="legendaries">
+            <h1>Legendaries</h1>
+        </div>
+        <section>
+
+            <% if(legendary) { %>
+
+            <img id="mew" src="images/mew.svg" alt="Mew"/>
+            <div id="infos">
+                <h2><%= legendary.name %></h2>
+                <p>
+                    <%= legendary.description %>
+                </p>
+                <div id="nivel_skills">
+                    <div>
+                        <p>Healthy Points</p>
+                        <p><%= legendary.healthPoints %></p>
+                        <img src="images/cardX.svg" alt="barra de força"/>
+                    </div>
+                    <div>
+                        <p>Attack</p>
+                        <p><%= legendary.attack %></p>
+                        <img src="images/cardX.svg" alt="barra de força"/>
+                    </div>
+                    <div>
+                        <p>Special Attack</p>
+                        <p><%= legendary.specialAttack %></p>
+                        <img src="images/cardX.svg" alt="barra de força"/>
+                    </div>
+                    <div>
+                        <p>Experience</p>
+                        <p><%= legendary.experience %></p>
+                        <img src="images/cardX.svg" alt="barra de força"/>
+                    </div>
+                    <div>
+                        <p>Defense</p>
+                        <p><%= legendary.defense %></p>
+                        <img src="images/cardX.svg" alt="barra de força"/>
+                    </div>
+                    <div>
+                        <p>Special Defense</p>
+                        <p><%= legendary.specialDefense %></p>
+                        <img src="images/cardX.svg" alt="barra de força"/>
+                    </div>
+                </div>
+            </div>
+            <% } else { %>
+                <strong class="not_found">Not Found</strong>
+            <% } %>
+        </section>
+        <section id="cards">          
+            <img src="images/pokemons.svg" alt="Card do Mew"/>
+        </section>
+    </main>
+</body>
+</html>
