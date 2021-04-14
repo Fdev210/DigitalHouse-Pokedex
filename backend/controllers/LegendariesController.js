@@ -1,6 +1,7 @@
 const { EMLINK } = require('constants');
 const fs = require('fs');
-const listLegendaries = require('../legendaries.json')
+const path = require('path');
+const listLegendaries = path.join(__dirname, '../legendaries.json');
 const LegendariesService = require('../services/LegendariesService');
 
 
@@ -14,7 +15,7 @@ const controller = {
     },
 
     create: (req, res) => {
-        fs.readFile('../legendaries.json', 'utf8', (err, jsonLegendaries) => {
+        fs.readFile(listLegendaries, 'utf8', (err, jsonLegendaries) => {
             if (err) throw err;
             
             const {
@@ -44,9 +45,9 @@ const controller = {
             let arrayLegendaries = JSON.parse(jsonLegendaries);
 
             arrayLegendaries.push(legendary);           
-            const legendariesList = () => JSON.stringify(arrayLegendaries, null, 2);
+            const insertLegendary = JSON.stringify(arrayLegendaries, null, 2);
 
-            fs.writeFile('../legendaries.json', legendariesList(), err => {
+            fs.writeFile(listLegendaries, insertLegendary, err => {
                 if (err) throw err;
                 console.log('Pokemon criado com sucesso !')
             });
@@ -56,7 +57,7 @@ const controller = {
     }, 
 
     read: (req, res) => {
-        fs.readFile('../legendaries.json', 'utf8', (err, jsonLegendaries) => {
+        fs.readFile(listLegendaries, 'utf8', (err, jsonLegendaries) => {
             if (err) throw err;
             const legendariesList = JSON.parse(jsonLegendaries)
             return res.json(legendariesList);
@@ -65,11 +66,6 @@ const controller = {
 
     update: (req, res) => {
         const { id } = req.params;
-
-        if(!id) {
-            return res.status(400).json({error: 'ID is required'})
-        }
-
         const {
             name,  
             description, 
@@ -82,56 +78,66 @@ const controller = {
             specialDefense,
         } = req.body;
 
-        fs.readFile('../legendaries.json', 'utf8', (err, jsonLegendaries) => {
+        fs.readFile(listLegendaries, 'utf8', (err, jsonLegendaries) => {
             if (err) throw err;
-            const arrayLegendaries = JSON.parse(jsonLegendaries);
+            
+            let arrayLegendaries = JSON.parse(jsonLegendaries);
 
-            arrayLegendaries.foreach(elem => {
-                if(elem.id === id) {
-                    elem.name = name;
-                    elem.description = description;
-                    elem.type = type;
-                    elem.healthPoints = healthPoints; 
-                    elem.specialAttack = specialAttack; 
-                    elem.defense = defense;
-                    elem.attack = attack;
-                    elem.experience = experience;
-                    elem.specialDefense = specialDefense;
+            for(let legendary of arrayLegendaries) {
+                if(legendary.id == id) {
+                        legendary.name = name,  
+                        legendary.description = description, 
+                        legendary.type = type, 
+                        legendary.healthPoints = healthPoints, 
+                        legendary.specialAttack = specialAttack, 
+                        legendary.defense = defense, 
+                        legendary.attack = attack, 
+                        legendary.experience = experience, 
+                        legendary.specialDefense = specialDefense
+                    }     
                 }
 
-            let legendariesList = () => JSON.stringify(arrayLegendaries, null, 2);
-            fs.writeFile('../legendaries.json', legendariesList(), err =>{
-                if(err) throw err;
-                console.log('Legendary deletado com sucesso')
-            })
-    
-            return res.json(legendariesList());
-            })
-        })        
+                const updateLegendary = JSON.stringify(arrayLegendaries, null, 2);
+                fs.writeFile(listLegendaries, updateLegendary, err => {
+                    if(err) throw err;
+                    console.log('Legendary atualizado com sucesso')
+                    
+                })       
+                
+                
+            
+            return res.json(updateLegendary);
+        })     
     },
 
     delete: (req, res) => {
 
         let { id } = req.params;
-
-        if(!id) {
-            return res.status(400).json({error: 'ID is required'})
-        }
-
-        fs.readFile('../legendaries.json', 'utf8', (err, jsonLegendaries) => {
+        
+        fs.readFile(listLegendaries, 'utf8', (err, jsonLegendaries) => {
             if(err) throw err;
-
+            
             let arrayLegendaries = JSON.parse(jsonLegendaries);
+
+            const verificadorId = (id, array) => {
+                return arrayLegendaries.indexOf(id) >= 0
+            }
             
-            arrayLegendaries.filter(elem => elem.id !== id);
-            const legendariesList = () => JSON.stringify(arrayLegendaries, null, 2)
+            if(!verificador(id, arrayLegendaries)) {
+                return res.status(400).render('Id não encontrado')
+            }
             
-            fs.writeFile('../legendaries.json', legendariesList(), err => {
+            let newArray = arrayLegendaries.filter(elem => elem.id != id);
+
+
+            const newList = JSON.stringify(newArray, null, 2)
+            
+            fs.writeFile(listLegendaries, newList, err => {
                 if (err) throw err;
                 console.log('Pokemon excluído com sucesso')
             });
-
-            res.json(legendariesList());
+            
+            res.json(newList);
         });
     }
 }

@@ -6,8 +6,8 @@ const controller = require('../controllers/LegendariesController');
 router.get('/', controller.index);
 router.post('/', controller.create);
 router.get('/listlegendaries', controller.read);
-router.put('/:id', controller.update);
-router.delete('/:id', controller.delete)
+router.put('/listlegendaries/:id', controller.update);
+router.delete('/listlegendaries/:id', controller.delete)
 
 
 module.exports = router;

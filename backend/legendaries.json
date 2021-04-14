@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "f95e445f-98c0-43e2-a12f-ec323c0f6747",
+    "name": "Articuno",
+    "description": "One of the legendary bird Pokémon, it chills moisture in the atmosphere to create snow while flying.",
+    "type": "water",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
+  },
+  {
+    "id": "8ba998bf-4272-40b4-91f3-c4ce2011cee9",
+    "name": "Moltres",
+    "description": "One of the legendary bird Pokémon, it chills moisture in the atmosphere to create snow while flying.",
+    "type": "flame",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
+  },
+  {
+    "id": "6c634ab6-09ff-45c3-bd6c-ac198ef293d2",
+    "name": "zapdos",
+    "description": "One of the legendary bird Pokémon, it chills moisture in the atmosphere to create snow while flying.",
+    "type": "eletric",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
+  }
+]
