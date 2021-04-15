@@ -81,30 +81,34 @@ const controller = {
         fs.readFile(listLegendaries, 'utf8', (err, jsonLegendaries) => {
             if (err) throw err;
             
-            let arrayLegendaries = JSON.parse(jsonLegendaries);
+            const arrayLegendaries = JSON.parse(jsonLegendaries);
 
+            let indexId = arrayLegendaries.findIndex(elem => elem.id == id)
+            
+            if(indexId == -1) return res.status(400).render('not-found');
+            
             for(let legendary of arrayLegendaries) {
                 if(legendary.id == id) {
-                        legendary.name = name,  
-                        legendary.description = description, 
-                        legendary.type = type, 
-                        legendary.healthPoints = healthPoints, 
-                        legendary.specialAttack = specialAttack, 
-                        legendary.defense = defense, 
-                        legendary.attack = attack, 
-                        legendary.experience = experience, 
-                        legendary.specialDefense = specialDefense
-                    }     
-                }
+                    legendary.name = name,  
+                    legendary.description = description, 
+                    legendary.type = type, 
+                    legendary.healthPoints = healthPoints, 
+                    legendary.specialAttack = specialAttack, 
+                    legendary.defense = defense, 
+                    legendary.attack = attack, 
+                    legendary.experience = experience, 
+                    legendary.specialDefense = specialDefense
+                }     
+            }
+            
+            let updateLegendary = arrayLegendaries[indexId];
 
-                const updateLegendary = JSON.stringify(arrayLegendaries, null, 2);
-                fs.writeFile(listLegendaries, updateLegendary, err => {
-                    if(err) throw err;
-                    console.log('Legendary atualizado com sucesso')
-                    
-                })       
+            const updateList = JSON.stringify(arrayLegendaries, null, 2);
+            fs.writeFile(listLegendaries, updateList, err => {
+                if(err) throw err;
+                console.log('Legendary atualizado com sucesso')
                 
-                
+            })       
             
             return res.json(updateLegendary);
         })     
@@ -119,17 +123,11 @@ const controller = {
             
             let arrayLegendaries = JSON.parse(jsonLegendaries);
 
-            const verificadorId = (id, array) => {
-                return arrayLegendaries.indexOf(id) >= 0
-            }
-            
-            if(!verificador(id, arrayLegendaries)) {
-                return res.status(400).render('Id não encontrado')
-            }
-            
+            const indexId = arrayLegendaries.findIndex(elem => elem.id == id);
             let newArray = arrayLegendaries.filter(elem => elem.id != id);
-
-
+            
+            if(indexId == -1) return res.status(400).render('not-found');
+                            
             const newList = JSON.stringify(newArray, null, 2)
             
             fs.writeFile(listLegendaries, newList, err => {
@@ -137,7 +135,7 @@ const controller = {
                 console.log('Pokemon excluído com sucesso')
             });
             
-            res.json(newList);
+            return res.json(newList);
         });
     }
 }
