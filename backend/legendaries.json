@@ -25,14 +25,14 @@
   },
   {
     "id": "6c634ab6-09ff-45c3-bd6c-ac198ef293d2",
-    "name": "zapdos",
+    "name": "zapidos",
     "description": "One of the legendary bird Pokémon, it chills moisture in the atmosphere to create snow while flying.",
-    "type": "eletric",
+    "type": "bird",
     "healthPoints": "1000,00",
     "specialAttack": "1000,00",
     "defense": "1000,00",
     "attack": "1000,00",
     "experience": "1000,00",
-    "specialDefense": "1000,00"
+    "specialDefense": "900,00"
   }
 ]
