@@ -124,9 +124,10 @@ const controller = {
             let arrayLegendaries = JSON.parse(jsonLegendaries);
 
             const indexId = arrayLegendaries.findIndex(elem => elem.id == id);
-            let newArray = arrayLegendaries.filter(elem => elem.id != id);
             
             if(indexId == -1) return res.status(400).render('not-found');
+
+            let newArray = arrayLegendaries.filter(elem => elem.id != id);
                             
             const newList = JSON.stringify(newArray, null, 2)
             
@@ -135,7 +136,7 @@ const controller = {
                 console.log('Pokemon excluído com sucesso')
             });
             
-            return res.json(newList);
+            return res.json(newArray);
         });
     }
 }
