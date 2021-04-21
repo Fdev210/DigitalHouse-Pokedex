@@ -34,5 +34,29 @@
     "attack": "1000,00",
     "experience": "1000,00",
     "specialDefense": "900,00"
+  },
+  {
+    "id": "c6b3655f-52ff-407f-9347-65bf2a26f9d5",
+    "name": "charmander",
+    "description": "One of the legendary bird Pokémon, it chills moisture in the atmosphere to create snow while flying.",
+    "type": "eletric",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
+  },
+  {
+    "id": "355f62cb-8947-4619-8f00-72843812d075",
+    "name": "warturtle",
+    "description": "I'm warturtle",
+    "type": "eletric",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
   }
 ]

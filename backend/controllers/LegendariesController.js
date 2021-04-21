@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const listLegendaries = path.join(__dirname, '../legendaries.json');
 const LegendariesService = require('../services/LegendariesService');
+const {validationResult} = require('express-validator');
 
 
 const controller = {
@@ -17,6 +18,10 @@ const controller = {
     create: (req, res) => {
         fs.readFile(listLegendaries, 'utf8', (err, jsonLegendaries) => {
             if (err) throw err;
+
+            let errors = validationResult(req);
+
+            if(!errors.isEmpty()) return res.status(400).json(errors)
             
             const {
                 name,  

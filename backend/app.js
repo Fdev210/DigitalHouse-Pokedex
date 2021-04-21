@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+// const logger = require('morgan');
 const multer = require('multer');
 
 const storage = require('./config/multer')
@@ -10,6 +10,7 @@ const storage = require('./config/multer')
 const indexRouter = require('./routes/index');
 const legendariesRouter = require('./routes/legendaries');
 const FileController = require('./controllers/FileController');
+const logger = require('./middlewares/logger')
 
 const app = express();
 const uploadsFile = multer({storage : storage});
@@ -17,12 +18,13 @@ const uploadsFile = multer({storage : storage});
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(logger);
 app.use('/', indexRouter);
 app.use('/legendaries', legendariesRouter);
 app.post('/files', uploadsFile.single('file'), FileController.storeFile);
