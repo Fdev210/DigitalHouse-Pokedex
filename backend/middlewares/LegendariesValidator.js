@@ -24,13 +24,32 @@
 const yup = require('yup')
 
 function validator (req, res, next) {
+
+    yup.setLocale({
+        mixed: {
+            default: 'field_invalid',
+        },
+    
+        number: {
+            min: ({ min }) => ({ key: "field_too_short", values: { min }})
+        }
+    })
+
     const schema = yup.object().shape({
         name: yup.string().required(),
         type: yup.string().required(),
-        description: yup.string().required().min(10)
+        description: yup.string().required().min(10),
+        healthPoints: yup.string().required(),
+        specialAttack: yup.string().required(),
+        defense: yup.string().required(),
+        attack: yup.string().required(),
+        experience: yup.string().required(),
+        specialDefense: yup.string().required()
     })
 
-    if (!schema.isValidSync(req.body)) return res.status(400).json({error: 'Invalid data'})
+    schema.validateSync(req.body).catch((err) => {
+        err.errors;
+})
 
     next()
 

@@ -58,5 +58,17 @@
     "attack": "1000,00",
     "experience": "1000,00",
     "specialDefense": "1000,00"
+  },
+  {
+    "id": "d81f90ff-0dce-428d-bd0a-ed2c517ce490",
+    "name": "Pimpo",
+    "description": "Pokemon especial com poderes raros",
+    "type": "eletric",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
   }
 ]
