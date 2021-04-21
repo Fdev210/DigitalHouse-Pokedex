@@ -140,7 +140,7 @@ const controller = {
                 console.log('Pokemon excluído com sucesso')
             });
             
-            return res.json(newList);
+            return res.json(newArray);
         });
     }
 }
