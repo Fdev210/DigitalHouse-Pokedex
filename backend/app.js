@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-// const logger = require('morgan');
+const logger = require('morgan');
 const multer = require('multer');
 
 const storage = require('./config/multer')
@@ -10,9 +10,10 @@ const storage = require('./config/multer')
 const indexRouter = require('./routes/index');
 const legendariesRouter = require('./routes/legendaries');
 const FileController = require('./controllers/FileController');
-const logger = require('./middlewares/logger')
+const Logger = require('./middlewares/Logger')
 
 const app = express();
+
 const uploadsFile = multer({storage : storage});
 
 // view engine setup
@@ -25,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(logger);
+app.use(Logger);
 app.use('/', indexRouter);
 app.use('/legendaries', legendariesRouter);
 app.post('/files', uploadsFile.single('file'), FileController.storeFile);

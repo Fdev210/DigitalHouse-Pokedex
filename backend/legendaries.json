@@ -58,5 +58,29 @@
     "attack": "1000,00",
     "experience": "1000,00",
     "specialDefense": "1000,00"
+  },
+  {
+    "id": "08291c07-595b-489f-b948-67c6e33f7e5d",
+    "name": "Gato mal-grado",
+    "description": "Pokemon gato-velho vira-lata",
+    "type": "eletric",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
+  },
+  {
+    "id": "3a56fc3b-feb1-4768-8f05-0bcc59ef40f0",
+    "name": "Pimpo",
+    "description": "Pokemon especial com poderes raros",
+    "type": "Eve",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
   }
 ]
