@@ -14,6 +14,7 @@ const logger = require('./middlewares/logger')
 
 const app = express();
 const uploadsFile = multer({storage : storage});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
