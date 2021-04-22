@@ -47,9 +47,15 @@ function validator (req, res, next) {
         specialDefense: yup.string().required()
     })
 
-    schema.validateSync(req.body).catch((err) => {
-        err.errors;
-})
+    // if(!schema.isValidSync(req.body)) {
+        
+    //     const messageError = new yup.ValidationError(req.body)
+    //     return res.status(400).json(messageError)
+    // }
+        
+
+   const messageError = schema.validateSync(req.body, {abortEarly: false})
+   return res.status(400).json(messageError)
 
     next()
 

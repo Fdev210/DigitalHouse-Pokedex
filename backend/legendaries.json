@@ -70,5 +70,17 @@
     "attack": "1000,00",
     "experience": "1000,00",
     "specialDefense": "1000,00"
+  },
+  {
+    "id": "8c6f33f9-2149-47ae-b941-fe560ae9f36e",
+    "name": "my pokemon",
+    "description": "hi I'm a pokemon and I love eat fruits of all kinds",
+    "type": "eletric",
+    "healthPoints": "1000,00",
+    "specialAttack": "1000,00",
+    "defense": "1000,00",
+    "attack": "1000,00",
+    "experience": "1000,00",
+    "specialDefense": "1000,00"
   }
 ]
