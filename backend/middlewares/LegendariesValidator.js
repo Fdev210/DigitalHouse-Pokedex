@@ -34,17 +34,20 @@ function validator (req, res, next) {
      const schema = yup.object().shape({
         name: yup.string().required("Legendary name is required"),
         type: yup.string().required("Legendary type is required"),
-        description: yup.string().required("Legendary description is required").min(10)
+        description: yup.string().required("Legendary description is required").min(10),
+        healthPoints: yup.string().required("Legendary healthPoints is required"),
+        specialAttack: yup.string().required("Legendary specialAttack is required"),
+        defense: yup.string().required("Legendary defense is required"),
+        attack: yup.string().required("Legendary attack is required"),
+        experience: yup.string().required("Legendary experience is required"),
+        specialDefense: yup.string().required("Legendary specialDefense is required")
     });
     
-    // let messageError = new yup.ValidationError([`${req.body.name}`, `${req.body.type}`, `${req.body.description}`]);
-    
-    // console.log(messageError);
-    // if(!schema.isValidSync(req.body, {abortEarly: false})) {
-    //     return res.status(400).json(messageError.inner);
-    // }
-
-    schema.validateSync(req.body, {abortEarly: false})
+    try {
+        schema.validateSync(req.body, { abortEarly: false })
+      } catch (err) {
+        return res.status(400).json(err.errors)
+      }
 
     next()
 
