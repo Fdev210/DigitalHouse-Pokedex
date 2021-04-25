@@ -1,4 +1,3 @@
-const { EMLINK } = require('constants');
 const fs = require('fs');
 const path = require('path');
 const listLegendaries = path.join(__dirname, '../legendaries.json');
@@ -19,9 +18,9 @@ const controller = {
         fs.readFile(listLegendaries, 'utf8', (err, jsonLegendaries) => {
             if (err) throw err;
 
-            let errors = validationResult(req);
+            // let error = validationResult(req);
 
-            if(!errors.isEmpty()) return res.status(400).json(errors)
+            // if(!error.isEmpty()) return res.status(400).json(errors)
             
             const {
                 name,  

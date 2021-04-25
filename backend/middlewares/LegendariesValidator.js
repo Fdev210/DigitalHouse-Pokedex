@@ -21,41 +21,30 @@
 
 // module.exports = validationList;
 
-const yup = require('yup')
+const yup = require('yup');
 
 function validator (req, res, next) {
 
     yup.setLocale({
         mixed: {
-            default: 'field_invalid',
-        },
+            default: 'Não é válido',
+          }
+    });
+
+     const schema = yup.object().shape({
+        name: yup.string().required("Legendary name is required"),
+        type: yup.string().required("Legendary type is required"),
+        description: yup.string().required("Legendary description is required").min(10)
+    });
     
-        number: {
-            min: ({ min }) => ({ key: "field_too_short", values: { min }})
-        }
-    })
-
-    const schema = yup.object().shape({
-        name: yup.string().required(),
-        type: yup.string().required(),
-        description: yup.string().required().min(10),
-        healthPoints: yup.string().required(),
-        specialAttack: yup.string().required(),
-        defense: yup.string().required(),
-        attack: yup.string().required(),
-        experience: yup.string().required(),
-        specialDefense: yup.string().required()
-    })
-
-    // if(!schema.isValidSync(req.body)) {
-        
-    //     const messageError = new yup.ValidationError(req.body)
-    //     return res.status(400).json(messageError)
+    // let messageError = new yup.ValidationError([`${req.body.name}`, `${req.body.type}`, `${req.body.description}`]);
+    
+    // console.log(messageError);
+    // if(!schema.isValidSync(req.body, {abortEarly: false})) {
+    //     return res.status(400).json(messageError.inner);
     // }
-        
 
-   const messageError = schema.validateSync(req.body, {abortEarly: false})
-   return res.status(400).json(messageError)
+    schema.validateSync(req.body, {abortEarly: false})
 
     next()
 
