@@ -14,6 +14,11 @@ const controller = {
         return res.json(legendary);
     },
 
+    indexAll: async (req, res) => {
+        const list = await LegendariesService.getLegendaryList();
+        return res.json(list);
+    },
+
     create: (req, res) => {
         fs.readFile(listLegendaries, 'utf8', (err, jsonLegendaries) => {
             if (err) throw err;

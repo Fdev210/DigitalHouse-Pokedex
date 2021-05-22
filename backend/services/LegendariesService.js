@@ -1,6 +1,7 @@
 const LegendaryModel = require('../models/LegendaryModel');
 const { v4: uuidv4 } = require('uuid');
 
+const database = require('../database/models/index');
 
 const LegendariesService = {
     listLegendaries: () => {
@@ -116,6 +117,11 @@ const LegendariesService = {
         );
 
         return newLegendary;
+    },
+
+    getLegendaryList: async () => {
+        const listLegendaries = await database.Legendary.findAll()
+        return listLegendaries
     }
 }
 

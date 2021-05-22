@@ -1,3 +1,14 @@
 [
-  
+  {
+    "id": "76534a08-c800-4af2-af52-e30933ab3f94",
+    "name": "mewtwo",
+    "description": "Its DNA is almost the same as Mew's. However, its size and disposition are vastly different.",
+    "type": "Psychic",
+    "healthPoints": "1000",
+    "specialAttack": "1000",
+    "defense": "1000",
+    "attack": "1000",
+    "experience": "1000",
+    "specialDefense": "1000"
+  }
 ]
