@@ -145,17 +145,20 @@ const LegendariesService = {
         experience, 
         specialDefense
         }, {
-            where: { id }
+            where: { id },
         })
 
-        return newValues
+        const values = await database.Legendary.findByPk(id)
+        return values.dataValues
     },
 
     destroyLegendary: async (id) => {
+        const targetValues = await database.Legendary.findByPk(id)
         const target = await database.Legendary.destroy({
             where: { id }
         });
-        return target
+        
+        return targetValues.dataValues
     }
 }
 
