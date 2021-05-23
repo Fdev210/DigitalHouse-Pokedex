@@ -35,12 +35,12 @@ function validator (req, res, next) {
         name: yup.string().required("Legendary name is required"),
         type: yup.string().required("Legendary type is required"),
         description: yup.string().required("Legendary description is required").min(10),
-        healthPoints: yup.string().required("Legendary healthPoints is required"),
-        specialAttack: yup.string().required("Legendary specialAttack is required"),
-        defense: yup.string().required("Legendary defense is required"),
-        attack: yup.string().required("Legendary attack is required"),
-        experience: yup.string().required("Legendary experience is required"),
-        specialDefense: yup.string().required("Legendary specialDefense is required")
+        healthPoints: yup.number().required("Legendary healthPoints is required"),
+        specialAttack: yup.number().required("Legendary specialAttack is required"),
+        defense: yup.number().required("Legendary defense is required"),
+        attack: yup.number().required("Legendary attack is required"),
+        experience: yup.number().required("Legendary experience is required"),
+        specialDefense: yup.number().required("Legendary specialDefense is required")
     });
     
     try {

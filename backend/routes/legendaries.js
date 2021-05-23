@@ -9,9 +9,8 @@ const router = express.Router();
 router.get('/', controller.index);
 router.post('/', validator, controller.create);
 router.get('/listlegendaries', controller.read);
-router.put('/listlegendaries/:id', validator, controller.update);
+router.put('/listlegendaries/:id', controller.update);
 router.delete('/listlegendaries/:id', controller.delete)
-router.get('/all', controller.indexAll)
 
 
 module.exports = router;
