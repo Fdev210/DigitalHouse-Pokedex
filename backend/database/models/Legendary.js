@@ -34,7 +34,6 @@ module.exports = (sequelize, DataTypes) => {
         },        
     },{
         tableName: 'LEGENDARIES',
-        timestamps: false,
     });
 
     Legendary.associate = function(models) {
