@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(100),
         }        
     },{
-        tableName: 'COACHES',
+        tableName: 'coaches',
     });
 
     Coaches.associate = function(models) {
