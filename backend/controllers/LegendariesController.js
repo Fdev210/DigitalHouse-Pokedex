@@ -5,6 +5,30 @@ const LegendariesService = require('../services/LegendariesService');
 const {validationResult} = require('express-validator');
 
 const controller = {
+    indexId: async (req, res) => {
+        const { id } = req.params
+        const legendary = await LegendariesService.getById(id)
+
+        if(!legendary) {
+            return res. status(404).json({error: `Legendary ${id} not found`})
+        }
+
+        return res.json(legendary)
+
+    },
+
+    indexIdAndAttribute: async (req, res) => {
+        const { id, attribute} = req.params
+
+        const legendary = await LegendariesService.getByAttribute(id, attribute)
+
+        if(!legendary) {
+            return res. status(404).json({error: `Legendary ${id} not found`})
+        }
+
+        return res.json(legendary)
+    },
+
     index: (req, res) => {
         const { name } = req.query;
 

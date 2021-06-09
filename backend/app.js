@@ -34,6 +34,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//GET E POST
+//http: //loaclhost:200/legendaries/ - Traz todos os dados daquele recurso
+//http: //loaclhost:200/legendaries/:id - Traz dados detalhados de um recurso específico
+//http: //loaclhost:200/legendaries/:id/:attribute - Traz um dado específico de um recurso específico
+//http: //loaclhost:200/coaches/
+
+//PUT E DELETE
+//http: //loaclhost:200/legendaries/:id
+//http: //loaclhost:200/legendaries/:id
+
 app.use(Logger);
 app.use('/', indexRouter);
 app.use('/legendaries', legendariesRouter);

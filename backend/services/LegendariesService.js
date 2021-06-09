@@ -118,7 +118,12 @@ const LegendariesService = {
     },
 
     getLegendaryList: async () => {
-        const listLegendaries = await database.Legendary.findAll()
+        // const listLegendaries = await database.Legendary.findAll({
+        //    attiributes: ['name', 'description']
+        //})
+        const listLegendaries = await database.sequelize.query("select name, description from legendaries where id = :id", {
+            type: database.Sequelize.QueryTypes.SELECT
+        })
         return listLegendaries
     },
 
@@ -159,6 +164,16 @@ const LegendariesService = {
         });
         
         return targetValues.dataValues
+    },
+
+    getById: async (id) => {
+        return await database.Legendary.findByPk(id)
+    },
+
+    getByAttribute: async (id, attribute) => {
+        return await database.Legendary.findByPk(id, {
+            attributes: [attribute]
+        })
     }
 }
 
