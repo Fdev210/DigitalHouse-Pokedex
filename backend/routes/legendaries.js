@@ -6,9 +6,8 @@ const validator = require('../middlewares/LegendariesValidator');
 const router = express.Router();
 
 //crud Legendaries
-// router.get('/', controller.index);
-router.get('/', controller.read);
 router.post('/', validator, controller.create);
+router.get('/', controller.read);
 router.put('/:id', controller.update);
 router.delete('/:id', controller.delete)
 

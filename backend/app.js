@@ -4,7 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const multer = require('multer');
-const session = require('express-session')
+const session = require('express-session');
+const swaggerUi = require('swagger-ui-express');
+
+const swaggerConfig = require('./swagger.json')
 
 const storage = require('./config/multer')
 
@@ -36,19 +39,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //GET E POST
-//http: //loaclhost:200/legendaries/ - Traz todos os dados daquele recurso
-//http: //loaclhost:200/legendaries/:id - Traz dados detalhados de um recurso específico
-//http: //loaclhost:200/legendaries/:id/:attribute - Traz um dado específico de um recurso específico
-//http: //loaclhost:200/coaches/
+//http://loacalhost:200/legendaries/ - Traz todos os dados daquele recurso
+//http://loacalhost:200/legendaries/:id - Traz dados detalhados de um recurso específico
+//http://loacalhost:200/legendaries/:id/:attribute - Traz um dado específico de um recurso específico
+//http://loacalhost:200/coaches/
 
 //PUT E DELETE
-//http: //loaclhost:200/legendaries/:id
-//http: //loaclhost:200/legendaries/:id
+//http://loacalhost:200/legendaries/:id
+//http://loacalhost:200/legendaries/:id
 
 app.use(Logger);
 app.use('/', indexRouter);
 app.use('/legendaries', legendariesRouter);
 app.post('/files', uploadsFile.single('file'), FileController.storeFile);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

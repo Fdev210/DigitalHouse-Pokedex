@@ -1,0 +1,115 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Digital House Pokedex",
+      "description": "API created at Digital House",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Legendaries",
+        "description": "API for legendaries in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/legendaries": {
+            "get": {
+                "tags": ["Legendaries"],
+                "summary": "Get a list of all legendaries in a json format",
+                "responses": {
+                    "200": { 
+                        " description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Legendaries"
+                        }
+                    }
+                }
+            }
+        },
+
+        "/legendaries/{id}": {
+            "get": {
+                "tags": ["Legendaries"],
+                "summary": "Get a details of a legendary in a json format",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Legendary id"
+                }],
+                "responses": {
+                    "200": { 
+                        " description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Legendaries"
+                        }
+                    },
+                    "404": {
+                        "descripition": "Legendary not found in database",
+                        "schema": "#/definitons/error"
+                    }
+                    
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "Legendary": {
+            "properties": {
+                "Id": {
+                    "type": "integer",
+                    "uniqueItems": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "healthPoints": {
+                    "type": "number"
+                },
+                "specialAttack": {
+                    "type": "number"
+                },
+                "defense": {
+                    "type": "number"
+                },
+                "attack": {
+                    "type": "number"
+                },
+                "experience": {
+                    "type": "number"
+                },
+                "specialDefense": {
+                    "type": "number"
+                }
+            }
+        },
+        "Legendaries": {
+            "type": "array",
+            "$ref": "#/definitions/Legendary"
+        },
+
+        "Error": {
+            "type": "string"
+        }
+    }
+
+    
+}
